@@ -1,7 +1,7 @@
 {
   "name": "jamixmealhooker",
   "version": "1.5.0",
-  "description": "Fetches meal data from Jamix and sends the daily meal to a webhook.",
+  "description": "Fetches meal data from Jamix and sends the meal to a webhook.",
   "main": "index.js",
   "scripts": {
     "start": "node app",
