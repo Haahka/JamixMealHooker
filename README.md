@@ -14,6 +14,10 @@ DISCORD_WEBHOOK=string
 ## Build
 
 ```
-npm install
+npm install dependencies
 npm start
 ```
+
+## Usage
+
+Setup a scheduler to run the app every day.
