@@ -5,14 +5,13 @@ console.log("App started!");
 
 const main = async () => {
     const data = await menu.fetchMenu(); // fetch the menu from Jamix's API
-    
-    if(data.general.weekend) {
-        console.log("It's weekend, no message today!")
-        return false;
-    }
 
-    if(data) {
-        send.menu(data); // send the menu to a webhook
+    if(typeof data == "object") {
+        if(data.general.weekend) {
+            console.log("It's weekend, no message today!");
+        } else {
+            send.menu(data); // send the menu to a webhook
+        }
     } else {
         console.log("An error happened whilst fetching the menu!");
     }

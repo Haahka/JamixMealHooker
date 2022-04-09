@@ -38,7 +38,17 @@ const fetchMenu = async () => {
 
 const createMenu = data => {
     const menu = data.menuTypes[0].menus[0];
-    const meal = day => menu.days[0].mealoptions[day];
+    
+    const meal = (day, option) => {
+        const selectedDay = menu.days[day];
+        const selectedMeal = selectedDay.mealoptions[option];
+
+        if(selectedDay.date == date.getCustomDate()) {
+            return selectedMeal;
+        } else {
+            return undefined;
+        }
+    };
 
     const mealObj = {
         "general": {
@@ -48,22 +58,22 @@ const createMenu = data => {
         },
         "meals": {
             "main": {
-                "caption": meal(0)?.name,
-                "meal" : meal(0)?.menuItems[0].name,
-                "diets" : meal(0)?.menuItems[0].diets,
-                "portionSize": meal(0)?.menuItems[0].portionSize
+                "caption": meal(0, 0)?.name,
+                "meal" : meal(0, 0)?.menuItems[0].name,
+                "diets" : meal(0, 0)?.menuItems[0].diets,
+                "portionSize": meal(0, 0)?.menuItems[0].portionSize
             },
             "vegetarian": {
-                "caption": meal(1)?.name,
-                "meal" : meal(1)?.menuItems[0].name,
-                "diets" : meal(1)?.menuItems[0].diets,
-                "portionSize": meal(1)?.menuItems[0].portionSize
+                "caption": meal(0, 1)?.name,
+                "meal" : meal(0, 1)?.menuItems[0].name,
+                "diets" : meal(0, 1)?.menuItems[0].diets,
+                "portionSize": meal(0, 1)?.menuItems[0].portionSize
             },
             "appendage": {
-                "caption": meal(2)?.name,
-                "meal" : meal(2)?.menuItems[0].name,
-                "diets" : meal(2)?.menuItems[0].diets,
-                "portionSize": meal(2)?.menuItems[0].portionSize
+                "caption": meal(0, 2)?.name,
+                "meal" : meal(0, 2)?.menuItems[0].name,
+                "diets" : meal(0, 2)?.menuItems[0].diets,
+                "portionSize": meal(0, 2)?.menuItems[0].portionSize
             }
         }
     };
