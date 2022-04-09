@@ -1,5 +1,6 @@
 const menu = require("./src/parseMenu.js");
 const send = require("./src/sendWebhook.js");
+const date = require("./src/date.js");
 
 console.log("App started!");
 
@@ -7,18 +8,20 @@ const main = async () => {
     const data = await menu.fetchMenu(); // fetch the menu from Jamix's API
 
     if(typeof data == "object") {
-        if(data.general.weekend) {
-            console.log("It's weekend, no message today!");
-        } else {
-            send.menu(data); // send the menu to a webhook
-        }
+        send.menu(data); // send the menu to a webhook
     } else {
         console.log("An error happened whilst fetching the menu!");
     }
 };
 
 if(process.env.KITCHEN_ID && process.env.DISCORD_WEBHOOK) {
-    main();
+    const weekend = date.getWeekdayNumber() > 5 ? true: false;
+
+    if(!weekend) {
+        main();
+    } else {
+        console.log("Aborting execution, its a weekend!");
+    }
 } else {
     console.log("No environment variables found. Aborting!");
 }

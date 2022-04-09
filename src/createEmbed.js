@@ -4,7 +4,6 @@ require('dotenv').config();
 const BOT_THUMBNAIL = process.env.BOT_THUMBNAIL || "";
 const KITCHEN_ID = process.env.KITCHEN_ID || false;
 const FRONTEND_URL = "https://fi.jamix.cloud/apps/menu";
-const WEEKEND_TEXT = "Viikonloppu :)";
 
 const genMealEmbed = data => {
     const meals = data?.meals;
@@ -23,11 +22,7 @@ const genMealEmbed = data => {
         let details = `${meals.main.meal} (${meals.main.diets})`;
         
         if(meals.main.meal.includes("OMAT RUOKALISTAT")) {
-            if(date.getWeekdayNumber() > 5) {
-                details = WEEKEND_TEXT;
-            } else {
-                details = meals.main.meal;
-            }
+            details = meals.main.meal;
         }
 
         embed.fields.push({

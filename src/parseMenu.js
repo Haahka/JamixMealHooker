@@ -38,7 +38,7 @@ const fetchMenu = async () => {
 
 const createMenu = data => {
     const menu = data.menuTypes[0].menus[0];
-    
+
     const meal = (day, option) => {
         const selectedDay = menu.days[day];
         const selectedMeal = selectedDay.mealoptions[option];
@@ -53,8 +53,7 @@ const createMenu = data => {
     const mealObj = {
         "general": {
             "title": "Päivän ruokalista",
-            "date": date.getDate(),
-            "weekend" : date.getWeekdayNumber() > 5 ? true : false
+            "date": date.getDate()
         },
         "meals": {
             "main": {
