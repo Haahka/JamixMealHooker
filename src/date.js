@@ -41,10 +41,19 @@ const getDate = () => {
     return `${toWeekday[date.getDay()]} ${day}.${month}.`;
 };
 
+const getFullDate = () => {
+    const date = new Date(timezone());
+    
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    return `${toWeekday[date.getDay()]} ${day}.${month}. @ ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+};
+
 const getWeekdayNumber = () => {
     const date = new Date(timezone());
     
     return date.getDay();
 };
 
-module.exports = { toWeekday, getCustomDate, getDate, getWeekdayNumber };
+module.exports = { toWeekday, getCustomDate, getDate, getWeekdayNumber, getFullDate };

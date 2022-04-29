@@ -1,6 +1,8 @@
 const axios = require('axios');
 const embed = require('./createEmbed.js');
-require('dotenv').config();
+const path = require("path");
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const BOT_NAME = process.env.BOT_NAME || "Bot";
 const BOT_ICON = process.env.BOT_ICON || "";

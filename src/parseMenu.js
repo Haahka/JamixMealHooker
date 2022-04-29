@@ -1,6 +1,8 @@
 const axios = require('axios');
 const date = require("./date.js");
-require('dotenv').config();
+const path = require("path");
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const KITCHEN_ID = process.env.KITCHEN_ID || false;
 const BACKEND_URL = "https://fi.jamix.cloud/apps/menuservice/rest/haku/menu";

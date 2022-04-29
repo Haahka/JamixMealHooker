@@ -1,8 +1,11 @@
 const menu = require("./src/parseMenu.js");
 const send = require("./src/sendWebhook.js");
 const date = require("./src/date.js");
+const path = require("path");
 
-console.log("App started!");
+require("dotenv").config({ path: path.resolve(__dirname, './.env') });
+
+console.log(`App started! (${date.getFullDate()})`);
 
 const main = async () => {
     const data = await menu.fetchMenu(); // fetch the menu from Jamix's API

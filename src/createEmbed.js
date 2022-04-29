@@ -1,5 +1,6 @@
-const date = require("./date.js");
-require('dotenv').config();
+const path = require("path");
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const BOT_THUMBNAIL = process.env.BOT_THUMBNAIL || "";
 const KITCHEN_ID = process.env.KITCHEN_ID || false;
@@ -19,8 +20,14 @@ const genMealEmbed = data => {
     }
 
     if(typeof meals.main.meal == "string") {
-        let details = `${meals.main.meal} (${meals.main.diets})`;
+        let diet = meals.main.diets;
+
+        if(diet.length == 0 || diet == false) {
+            diet = ''
+        }
         
+        let details = `${meals.main.meal} ${diet}`;
+
         if(meals.main.meal.includes("OMAT RUOKALISTAT")) {
             details = meals.main.meal;
         }
@@ -32,16 +39,32 @@ const genMealEmbed = data => {
     }
 
     if(typeof meals.vegetarian.meal == "string") {
+        let diet = meals.vegetarian.diets;
+
+        if(diet.length == 0 || diet == false) {
+            diet = ''
+        }
+
+        let details = `${meals.vegetarian.meal} ${diet}`;
+
         embed.fields.push({
             "name": meals.vegetarian.caption,
-            "value": `${meals.vegetarian.meal} (${meals.vegetarian.diets})`
+            "value": details
         });
     }
 
-    if(typeof meals.appendage.meal == "string" ) {
+    if(typeof meals.appendage.meal == "string") {
+        let diet = meals.appendage.diets;
+
+        if(diet.length == 0 || diet == false) {
+            diet = ''
+        }
+
+        let details = `${meals.appendage.meal} ${diet}`;
+
         embed.fields.push({
             "name": meals.appendage.caption,
-            "value": `${meals.appendage.meal} (${meals.appendage.diets})`
+            "value": details
         });
     }
 
