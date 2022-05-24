@@ -18,12 +18,14 @@ const main = async () => {
 };
 
 if(process.env.KITCHEN_ID && process.env.DISCORD_WEBHOOK) {
-    const weekend = date.getWeekdayNumber() > 5 ? true: false;
+    const weekend = 
+           date.getWeekdayNumber() == 6  // saturday
+        || date.getWeekdayNumber() == 0; // sunday
 
-    if(!weekend) {
-        main();
-    } else {
+    if(weekend) {
         console.log("Aborting execution, its a weekend!");
+    } else {
+        main();
     }
 } else {
     console.log("No environment variables found. Aborting!");
