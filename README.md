@@ -21,3 +21,12 @@ npm start
 ## Usage
 
 Setup a scheduler to run the app every day.
+
+```
+crontab -e
+0 5 0 * * * /usr/local/bin/node /home/your_name/JamixMealHooker-main/app.js
+```
+
+## Note
+
+Please use the latest Node.js version!
