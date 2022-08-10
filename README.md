@@ -27,6 +27,12 @@ crontab -e
 0 5 0 * * * /usr/local/bin/node /home/your_name/JamixMealHooker-main/app.js
 ```
 
+## Running without Wi-Fi
+
+Use the [Automate](https://play.google.com/store/apps/details?id=com.llamalab.automate&gl=US) app to schedule your hotspot to start at a specific time. Your device, such as Raspberry Pi, should automatically connect to the hotspot and be able to send the menu if timed right.
+
+You can download a flow for it [here](extra/HOTSPOT_SCHEDULER.flo).
+
 ## Note
 
-Please use the latest Node.js version!
+Use the latest Node.js version to avoid errors.
