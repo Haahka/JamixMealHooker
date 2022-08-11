@@ -22,7 +22,7 @@ const fetchMenu = async () => {
             return false;
         });
 
-    if(res.length != 0) {
+    if(res != false) {
         const createdMenu = createMenu(res);
 
         if(typeof createdMenu == "object") {
