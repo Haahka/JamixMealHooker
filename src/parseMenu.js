@@ -33,7 +33,7 @@ const fetchMenu = async () => {
         }
 
     } else {
-        console.log("Failed to load menu data!");
+        console.log("Failed to load menu data, do you have a solid internet connection?");
         return false;
     }
 };
