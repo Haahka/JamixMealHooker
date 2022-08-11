@@ -1,5 +1,5 @@
 # JamixMealHooker
-Fetches meal data from Jamix and sends the daily meal to a webhook.
+Fetches meal data from Jamix and sends the meal to a Webhook.
 
 ## Environment variables
 
